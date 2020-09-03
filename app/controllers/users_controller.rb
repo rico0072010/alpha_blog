@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :set_user, only: %i[edit update show destroy]
+  before_action :require_same_user, only: %i[edit update]
   before_action :require_admin, only: [:destroy]
 
   def index
@@ -12,33 +12,32 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
-    flash[:danger] = "User and all articles created by user have been deleted"
+    session[:user_id] = nil if @user == current_user
+    flash[:danger] = 'User and all articles created by user have been deleted'
     redirect_to users_path
   end
-  
+
   def new
     @user = User.new
   end
 
-  def create 
+  def create
     @user = User.new(user_params)
-      if @user.save
-        session[:user_id] = @user.id
-        flash[:success] = "Welcome to the alpha blog #{@user.username}"
-        redirect_to user_path(@user)
-      else
-        render 'new'
-      end
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome to the alpha blog #{@user.username}"
+      redirect_to user_path(@user)
+    else
+      render 'new'
+    end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update
-      flash[:success] = "Account successfully updated"
+      flash[:success] = 'Account successfully updated'
       redirect_to articles_path
     else
       render 'edit'
@@ -46,25 +45,26 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:username, :email, :password)
-    end
-    
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def require_same_user
-      if current_user != @user and !current_user.admin?
-        flash[:danger] = "You can only edit your account"
-        redirect_to root_path
-      end
-    end
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
+  end
 
-    def require_admin
-      if logged_in? and !current_user.admin?
-        flash[:danger] = "Only admin users can perform that action"
-        redirect_to root_path
-      end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    if (current_user != @user) && !current_user.admin?
+      flash[:danger] = 'You can only edit your account'
+      redirect_to root_path
     end
+  end
+
+  def require_admin
+    if logged_in? && !current_user.admin?
+      flash[:danger] = 'Only admin users can perform that action'
+      redirect_to root_path
+    end
+  end
 end
