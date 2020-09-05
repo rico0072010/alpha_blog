@@ -1,14 +1,17 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 #logo {
   float: left;
   font-size: 1.7em;
-  color: rgba(71, 101, 144, 0.835);
+  color: rgba(22, 17, 88, 0.541);
   text-transform: uppercase;
-  letter-spacing: -1.2px;
+  letter-spacing: -1px;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: rgb(109, 164, 173);
+  color: #fff;
   text-decoration: none;
 }
 
@@ -16,73 +19,48 @@
   text-align: center;
 }
 
-.col-form-label {
-  text-align: right;
-}
-
-.btn-xlg {
-  font-size: 1.7em;
-  background-color: rgba(11, 93, 187, 0.863);
-  color: white;
-  width: 200px;
-  border-radius: 40px;
-  height: 50px;
-}
-
 .jumbotron {
-  background-image: image-url('bg.png');
+  background-image: asset-url('bg.png');
   background-size: cover;
-  height: 800px;
+  height: 470px;
 }
 
 .jumbotron h1 {
+  color: black;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   letter-spacing: -1px;
+  font-weight: bold;
 }
 
-.container {
-  width: 90%;
+.btn-xlarge {
+  font-size: 1.7em;
+  background-color: black;
 }
 
 footer {
-
   margin-top: 45px;
-  
   padding-top: 5px;
-  
   border-top: 1px solid #eaeaea;
-  
   color: #777;
-  
-  }
-  
-  footer a:hover {
-  
+}
+
+footer a:hover {
   color: #222;
-  
-  }
-  
-  footer small {
-  
+}
+
+footer small {
   float: left;
-  
-  }
-  
-  footer ul {
-  
+}
+
+footer ul {
   float: right;
-  
   list-style: none;
-  
-  }
-  
-  footer ul li {
-  
+}
+
+footer ul li {
   float: left;
-  
   margin-left: 15px;
-  
 }
 
 .article-actions {
@@ -113,4 +91,15 @@ footer {
 .listing {
   list-style: none;
   padding-left: 0;
+}
+
+.badge {
+  background-color: #CEF6F5;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.input_checkbox input {
+  width: auto !important;
 }

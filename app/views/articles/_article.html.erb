@@ -30,8 +30,8 @@
 </tbody>
 
 <br>
-
-<div class="col-xs-2 col-xs-offset-2">
-  <%= link_to 'New Article', new_article_path %> | 
-  <%= link_to 'Back', root_path %>
-</div>
+<% if (obj != @categories) && (current_user == @user) %>
+  <div class="col-xs-2 col-xs-offset-2">
+    <%= link_to 'New Article', new_article_path, class: "btn btn-primary"%>
+  </div>
+<% end %>
