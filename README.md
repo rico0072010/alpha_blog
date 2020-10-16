@@ -1,24 +1,33 @@
-# README
+# Alpha Blog application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the Alpha Blog application for
+[*The Complete Ruby on Rails tutorial*](https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/).
 
-Things you may want to cover:
+## Information
 
-* Ruby version
+Alpha blog application is my very first app that I created on Ruby on Rails framework. This App is a twitter clone with all neccessary functionality, it has one to many association, many to many association, user and post functionality, admin, categories, actions restrictions, sessions, image uploading with fog, bootstrap styling, feed, email confirmation and password reset with sendgrid support in production and more.
 
-* System dependencies
+Checkout the app on heroku [Alpha Blog](https://alpha-blog-udemy-project.herokuapp.com/)
 
-* Configuration
+## Getting started
 
-* Database creation
+To get started with the app, clone the repo and then install the needed gems:
 
-* Database initialization
+```
+$ bundle install --without production
+```
 
-* How to run the test suite
+Next, migrate the database:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rails db:migrate
+```
 
-* Deployment instructions
+Then 
 
-* ...
+```
+$ rails server
+```
+
+For more information, see the
+[*Complete Ruby on Rails Tutorial* book](https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/).
